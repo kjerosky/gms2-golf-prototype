@@ -1,3 +1,9 @@
-altitude = 0;
+enum BallState {
+	IDLE,
+	IN_AIR,
+	ROLLING
+};
 
-inFlight = false;
+state = BallState.IDLE;
+
+altitude = 0;

@@ -1,49 +1,61 @@
 if (keyboard_check_pressed(ord("R"))) {
 	x = xstart;
 	y = ystart;
+	direction = 0;
 	altitude = 0;
-	inFlight = false;
+	
+	state = BallState.IDLE;
 }
 
-if (!inFlight && keyboard_check_pressed(vk_space)) {
-	inFlight = true;
+if (state == BallState.IDLE && keyboard_check_pressed(vk_space)) {
+	state = BallState.IN_AIR;
+
 	altitude = 0.1;
-	
 	altitudeSpeed = 2.5;
-	altitudeGravity = 0.05;
+	altitudeGravity = 0.04;
 	
-	direction = 0;
 	var groundSpeed = 2;
 	xSpeed = lengthdir_x(groundSpeed, direction);
 	ySpeed = lengthdir_y(groundSpeed, direction);
+} else if (state == BallState.IN_AIR && abs(altitude) < 0.1 && abs(altitudeSpeed) < 0.1) {
+	state = BallState.ROLLING;
+
+	altitude = 0;
+	altitudeSpeed = 0;
+} else if (state == BallState.ROLLING && point_distance(0, 0, xSpeed, ySpeed) < 0.1) {
+	state = BallState.IDLE;
 	
+	xSpeed = 0;
+	ySpeed = 0;
 }
 
-if (inFlight) {
-	var ballBounceDampeningFactor = 0.6;
+switch (state) {
+	case BallState.IDLE: {
+		// do nothing
+	} break;
 	
-	x += xSpeed;
-	y += ySpeed;
-	altitude = altitude + altitudeSpeed;
+	case BallState.IN_AIR: {
+		var ballBounceDampeningFactor = 0.6;
 	
-	if (altitude < 0) {
-		altitude = abs(altitude);
-		altitudeSpeed = abs(altitudeSpeed) * ballBounceDampeningFactor;
-	}
+		x += xSpeed;
+		y += ySpeed;
+		altitude = altitude + altitudeSpeed;
 	
-	altitudeSpeed -= altitudeGravity;
+		if (altitude < 0) {
+			altitude = abs(altitude);
+			altitudeSpeed = abs(altitudeSpeed) * ballBounceDampeningFactor;
+		}
 	
-	if (altitude == 0) {
-		inFlight = false;
-	}
-
-	exit;
+		altitudeSpeed -= altitudeGravity;
+	} break;
+	
+	case BallState.ROLLING: {
+		x += xSpeed;
+		y += ySpeed;
+		
+		var frictionAmount = 0.025;
+		var frictionDirection = point_direction(0, 0, -xSpeed, -ySpeed);
+		xSpeed += lengthdir_x(frictionAmount, frictionDirection);
+		ySpeed += lengthdir_y(frictionAmount, frictionDirection);
+	} break;
 }
-
-var moveHorizontal = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-var moveVertical = keyboard_check(ord("S")) - keyboard_check(ord("W"));
-x += moveHorizontal;
-y += moveVertical;
-
-var adjustAltitude = keyboard_check(vk_up) - keyboard_check(vk_down);
-altitude = max(0, altitude + adjustAltitude);

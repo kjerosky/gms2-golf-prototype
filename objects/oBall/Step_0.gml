@@ -20,9 +20,16 @@ if (!inFlight && keyboard_check_pressed(vk_space)) {
 }
 
 if (inFlight) {
+	var ballBounceDampeningFactor = 0.6;
+	
 	x += xSpeed;
 	y += ySpeed;
-	altitude = max(0, altitude + altitudeSpeed);
+	altitude = altitude + altitudeSpeed;
+	
+	if (altitude < 0) {
+		altitude = abs(altitude);
+		altitudeSpeed = abs(altitudeSpeed) * ballBounceDampeningFactor;
+	}
 	
 	altitudeSpeed -= altitudeGravity;
 	

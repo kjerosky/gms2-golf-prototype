@@ -3,12 +3,12 @@ if (oBall.state != BallState.IDLE) {
 	exit;
 }
 
-if (keyboard_check_pressed(vk_up)) {
+if (oInput.previousClubWasPressed) {
 	selectedClubIndex--;
 	if (selectedClubIndex < 0) {
 		selectedClubIndex = Clubs.LAST - 1;
 	}
-} else if (keyboard_check_pressed(vk_down)) {
+} else if (oInput.nextClubWasPressed) {
 	selectedClubIndex++;
 	if (selectedClubIndex >= Clubs.LAST) {
 		selectedClubIndex = 0;

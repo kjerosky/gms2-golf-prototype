@@ -1,5 +1,5 @@
 //TODO: Remove this temporary reset button when done testing!
-if (keyboard_check_pressed(ord("R"))) {
+if (oInput.resetWasPressed) {
 	state = BallState.IDLE;
 
 	x = xstart;
@@ -13,7 +13,7 @@ if (keyboard_check_pressed(ord("R"))) {
 
 
 
-var swingButtonWasPressed = keyboard_check_pressed(vk_space);
+var swingButtonWasPressed = oInput.swingWasPressed;
 var ballStoppedBouncing = abs(altitude) < 0.1 && abs(verticalSpeed) < 0.1;
 var ballStoppedRolling = point_distance(0, 0, xGroundSpeed, yGroundSpeed) < 0.1;
 

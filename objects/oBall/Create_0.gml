@@ -9,7 +9,7 @@ BALL_BOUNCE_DAMPENING_FACTOR = 0.6;
 
 FAIRWAY_FRICTION = 0.025;
 
-
+// ---------------------------------------------------------------------------
 
 state = BallState.IDLE;
 

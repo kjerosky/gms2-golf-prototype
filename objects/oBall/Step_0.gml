@@ -20,9 +20,9 @@ var ballStoppedRolling = point_distance(0, 0, xGroundSpeed, yGroundSpeed) < 0.1;
 if (state == BallState.IDLE && swingButtonWasPressed) {
 	state = BallState.IN_AIR;
 
-	//TODO: Replace these values with ones using the selected club and the player's swing performance.
-	verticalSpeed = 2.5;
-	var groundSpeed = 2;
+	//TODO: Adjust these values based on the player's swing performance.
+	verticalSpeed = oGolfBag.selectedClub.verticalSpeed;
+	var groundSpeed = oGolfBag.selectedClub.groundSpeed;
 
 	xGroundSpeed = lengthdir_x(groundSpeed, direction);
 	yGroundSpeed = lengthdir_y(groundSpeed, direction);

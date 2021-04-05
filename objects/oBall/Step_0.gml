@@ -51,7 +51,8 @@ y += yGroundSpeed;
 
 switch (state) {
 	case BallState.IDLE: {
-		// nothing to do for now
+		var turnDirection = oInput.turnLeftIsPressed - oInput.turnRightIsPressed;
+		direction += turnDirection * TURN_AMOUNT;
 	} break;
 
 	case BallState.IN_AIR: {

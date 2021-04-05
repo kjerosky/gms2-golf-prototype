@@ -7,6 +7,8 @@ enum BallState {
 BALL_GRAVITY = 0.04;
 BALL_BOUNCE_DAMPENING_FACTOR = 0.6;
 
+TURN_AMOUNT = 1;
+
 FAIRWAY_FRICTION = 0.025;
 
 // ---------------------------------------------------------------------------

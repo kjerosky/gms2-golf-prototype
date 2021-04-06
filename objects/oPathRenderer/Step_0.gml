@@ -5,20 +5,20 @@ var ballDirection = oBall.direction;
 var ballStateChangedToIdle = ballState != previousBallState && ballState == BallState.IDLE;
 var selectedClubChanged = selectedClubIndex != previousSelectedClubIndex;
 var ballDirectionChanged = ballDirection != previousBallDirection;
-
 var pathRecalculationIsNeeded =
 	ballStateChangedToIdle ||
 	selectedClubChanged ||
 	ballDirectionChanged;
+
+previousBallState = ballState;
+previousSelectedClubIndex = selectedClubIndex;
+previousBallDirection = ballDirection;
+
 if (!pathRecalculationIsNeeded) {
 	exit;
 }
 
 
-
-previousBallState = ballState;
-previousSelectedClubIndex = selectedClubIndex;
-previousBallDirection = ballDirection;
 
 var selectedClub = oGolfBag.selectedClub;
 

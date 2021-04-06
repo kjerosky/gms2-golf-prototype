@@ -10,6 +10,7 @@
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"order":0,},
     {"id":{"name":"oPathRenderer","path":"objects/oPathRenderer/oPathRenderer.yy",},"order":5,},
     {"id":{"name":"sGrassTile","path":"sprites/sGrassTile/sGrassTile.yy",},"order":1,},
+    {"id":{"name":"sPathImpactPoint","path":"sprites/sPathImpactPoint/sPathImpactPoint.yy",},"order":4,},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},"order":0,},
   ],
   "Options": [

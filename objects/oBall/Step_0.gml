@@ -21,8 +21,9 @@ if (state == BallState.IDLE && swingButtonWasPressed) {
 	state = BallState.IN_AIR;
 
 	//TODO: Adjust these values based on the player's swing performance.
-	verticalSpeed = oGolfBag.selectedClub.verticalSpeed;
-	var groundSpeed = oGolfBag.selectedClub.groundSpeed;
+	var fractionOfMaxDistance = 1;
+	verticalSpeed = calculateBallInitialVerticalSpeed(BALL_GRAVITY, oGolfBag.selectedClub.maxDistance, oGolfBag.selectedClub.groundSpeedForMaxDistance, fractionOfMaxDistance);
+	var groundSpeed = oGolfBag.selectedClub.groundSpeedForMaxDistance * sqrt(fractionOfMaxDistance);
 
 	xGroundSpeed = lengthdir_x(groundSpeed, direction);
 	yGroundSpeed = lengthdir_y(groundSpeed, direction);

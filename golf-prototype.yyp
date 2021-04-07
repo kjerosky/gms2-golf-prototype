@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"oInput","path":"objects/oInput/oInput.yy",},"order":4,},
     {"id":{"name":"sPathPoint","path":"sprites/sPathPoint/sPathPoint.yy",},"order":3,},
+    {"id":{"name":"Kinematics","path":"scripts/Kinematics/Kinematics.yy",},"order":0,},
     {"id":{"name":"oGolfBag","path":"objects/oGolfBag/oGolfBag.yy",},"order":3,},
     {"id":{"name":"sBall","path":"sprites/sBall/sBall.yy",},"order":0,},
     {"id":{"name":"sBallShadow","path":"sprites/sBallShadow/sBallShadow.yy",},"order":2,},

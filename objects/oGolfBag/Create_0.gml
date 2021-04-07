@@ -7,18 +7,18 @@ enum Clubs {
 
 clubs[Clubs.WOOD] = {
 	name: "WOOD",
-	verticalSpeed: 1.75,
-	groundSpeed: 3.75
+	maxDistance: 328.125,
+	groundSpeedForMaxDistance: 3.75
 };
 clubs[Clubs.IRON] = {
 	name: "IRON",
-	verticalSpeed: 2.5,
-	groundSpeed: 2
+	maxDistance: 250,
+	groundSpeedForMaxDistance: 2
 };
 clubs[Clubs.PUTTER] = {
 	name: "PUTTER",
-	verticalSpeed: 0,
-	groundSpeed: 4
+	maxDistance: 0,
+	groundSpeedForMaxDistance: 4
 };
 
 // ---------------------------------------------------------------------------
